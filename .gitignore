@@ -1,0 +1,16 @@
+# Ignore the following folder(s) and file(s)
+
+
+# Folder(s)
+*/
+
+# File(s)
+rename.bat
+debug.cbp
+*.depend
+*.docx
+*.layout
+*.o
+rename.sh
+
+

@@ -1,0 +1,30 @@
+# Program name
+PROG = sShell
+
+# Compiler
+CC = mingw32-gcc
+
+# Compiler flags
+CFLAGS = -g -pedantic -std=c11 -Wall
+
+# C/C++ files
+CFILES = sShell.c change_directory.c functions.c
+
+# C Header files
+CHFILES =  change_directory.h functions.h
+
+# Object files
+OBJECTS = sShell.o change_directory.o functions.o
+
+
+$(PROG) : $(OBJECTS)
+	$(CC) -o $(PROG) $(OBJECTS)
+
+$(OBJECTS) : $(CFILES) $(CHFILES)
+	$(CC) -c $(CFILES) $(CFLAGS)
+
+clean :
+	rm -f $(PROG) $(OBJECTS)
+
+
+
