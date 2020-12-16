@@ -5,12 +5,13 @@
 */
 
 # File(s)
-rename.bat
 debug.cbp
 *.depend
 *.docx
+*.exe
 *.layout
 *.o
+rename.bat
 rename.sh
 
 
