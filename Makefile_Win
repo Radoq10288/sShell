@@ -8,13 +8,13 @@ CC = mingw32-gcc
 CFLAGS = -g -pedantic -std=c11 -Wall
 
 # C/C++ files
-CFILES = sShell.c change_directory.c functions.c
+CFILES = builtin-cmd.c change-directory.c exec-cmd.c parse-str.c read-str.c sShell.c
 
-# C Header files
-CHFILES =  change_directory.h functions.h
+# C/++ Header files
+CHFILES =  builtin-cmd.h change-directory.h exec-cmd.h parse-str.h read-str.h
 
 # Object files
-OBJECTS = sShell.o change_directory.o functions.o
+OBJECTS = builtin-cmd.o change-directory.o exec-cmd.o parse-str.o read-str.o sShell.o
 
 
 $(PROG) : $(OBJECTS)
