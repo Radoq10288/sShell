@@ -35,7 +35,8 @@
  */
 
 
-#include "functions.h"
+#include "exec-cmd.h"
+#include "read-str.h"
 #include <stdio.h>
 #include <string.h>
 
