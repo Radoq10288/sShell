@@ -1,5 +1,4 @@
-/* sShell (simple-Shell) - a personal project to teach myself to build a
- *						   shell.
+/* sShell - simple shell.
  * Copyright (C) 2020  Radoq10288
  *
  * This program is free software; you can redistribute it and/or modify
