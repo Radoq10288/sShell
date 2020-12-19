@@ -36,12 +36,17 @@
 
 
 #include "exec-cmd.h"
+#include "history.h"
 #include "read-str.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 
 int main(){
+
+	// Initialize
+	init_history();
 
 	// sShell notice
 	//system("cls");
@@ -53,8 +58,9 @@ int main(){
 	// Load config files, if any.
 
 	// Shell loop.
-	char *command_string = NULL;
-	int sShell_status = -1;
+	char *command_string,
+         *command_string_copy;
+	int sShell_status = -1, cs_size = 0, history_count;
 
 	while(sShell_status != 0){
 
@@ -62,15 +68,36 @@ int main(){
 
 		printf("sShell>");
 		command_string = read_string();
-		if(strcmp(command_string, "") != 0){
+
+        cs_size = strlen(command_string);
+        command_string_copy = malloc(sizeof(char) * cs_size);
+        strcpy(command_string_copy, command_string);
+
+		if(command_string != NULL){
+			
+			history_count = get_history_count();
+			if(history_count > 10){
+				
+				while(history_count > 10){
+					delete_last_history();
+					history_count = get_history_count();
+				}
+				
+			}
+			
 			sShell_status = exec_command(command_string);
+			add_new_history(command_string_copy);
 		}
-		
+
 		command_string = NULL;
+		command_string_copy = NULL;
+		free(command_string_copy);
 
 	}
 
 	// Perform any shutdown/cleanup.
+	free_history();
+	free(command_string);
 
 	return 0;
 }

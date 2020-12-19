@@ -8,13 +8,21 @@ CC = gcc
 CFLAGS = -g -pedantic -std=c11 -Wall
 
 # C/C++ files
-CFILES = builtin-cmd.c change-directory.c exec-cmd.c parse-str.c read-str.c sShell.c
+CFILES = sShell.c\
+		exec-cmd.c parse-str.c read-str.c\
+		builtin-cmd.c\
+		change-directory.c history.c
 
 # C/++ Header files
-CHFILES =  builtin-cmd.h change-directory.h exec-cmd.h parse-str.h read-str.h
+CHFILES = exec-cmd.h parse-str.h read-str.h\
+		builtin-cmd.h\
+		change-directory.h history.h
 
 # Object files
-OBJECTS = builtin-cmd.o change-directory.o exec-cmd.o parse-str.o read-str.o sShell.o
+OBJECTS = sShell.o\
+		exec-cmd.o parse-str.o read-str.o\
+		builtin-cmd.o\
+		change-directory.o history.o
 
 
 $(PROG) : $(OBJECTS)

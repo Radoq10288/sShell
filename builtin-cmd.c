@@ -10,8 +10,11 @@
 
 #include "builtin-cmd.h"
 #include "change-directory.h"
-#include "parse-str.h"
+#include "ctype.h"
+#include "exec-cmd.h"
+#include "history.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 
@@ -42,6 +45,40 @@ int change_directory(char *cd_arguments){
 int exit_shell(void){
 	printf("Logout\n\n");
 	return 0;
+}
+
+
+int history(char *hs_argument_1, char *hs_argument_2){
+	int history_index, hs_status;
+
+	if(isdigit(*hs_argument_1) && strcmp(hs_argument_2, "-e") == 0){
+		char *hs_command_copy;
+
+		history_index = *hs_argument_1 - 48;
+		hs_command_copy = get_history_item(history_index);
+
+		hs_status = exec_command(hs_command_copy);
+
+	}else if(isdigit(*hs_argument_1)){
+		history_index = *hs_argument_1 - 48;
+		print_history_item(history_index);
+		hs_status = 1;
+
+	}else if(strcmp(hs_argument_1, "-c") == 0){
+		clear_history();
+		printf("History cleared!\n\n");
+		hs_status = 1;
+
+	}else if(strcmp(hs_argument_1, "history") == 0){
+		print_history_list();
+		hs_status = 1;
+
+	}else{
+		hs_status = -1;
+
+	}
+
+	return hs_status;
 }
 
 
