@@ -1,4 +1,4 @@
-/* Files:			exec-cmd.h
+/* Files:			exec-cmd.c
  *
  * Author:			Radoq10288
  *

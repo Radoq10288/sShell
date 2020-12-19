@@ -1,4 +1,4 @@
-/* File:			history.h
+/* File:			history.c
  *
  * Author:			Radoq10288
  *
@@ -159,6 +159,5 @@ void print_history_list(void){
 
 	printf("\n");
 }
-
 
 

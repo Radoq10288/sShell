@@ -14,15 +14,16 @@
 
 /* Descripition:	Changes or display the current directory.
  *
- * Parameter:		String of absolute directory path or directory
- *					name. In case of absolute directory path,
+ * Parameter:		String of absolute directory path delimited by
+ *					backslash or directoryname.
  *
- * Return:
+ * Return:			Return 1 if command is executed succesfully. Else
+ *					if it fails, return -1.
  */
 int change_directory(char *cd_arguments);
 
 
-/* Descripition:	Specific command to exit sShell.
+/* Descripition:	Command to exit sShell.
  *
  * Parameter:
  *

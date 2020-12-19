@@ -1,4 +1,4 @@
-/* File:			builtin-cmd.h
+/* File:			builtin-cmd.c
  *
  * Author:			Radoq10288
  *

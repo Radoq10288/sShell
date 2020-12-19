@@ -49,7 +49,6 @@ int main(){
 	init_history();
 
 	// sShell notice
-	//system("cls");
 	printf("sShell (simple-Shell) version 0.1.0, Copyright (C) 2020 Radoq10288\n"
 			"sShell comes with ABSOLUTELY NO WARRANTY.\n"
 			"This is free software, and you are welcome to redistribute it\n"

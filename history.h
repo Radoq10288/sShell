@@ -45,7 +45,9 @@ void clear_history(void);
 void delete_last_history(void);
 
 
-/* Description:
+/* Description:	Same as clear_history() function to clear history
+ *				but also free-up the memory allocated previously
+ *				by init_history().
  *
  * Parameter:
  *
@@ -65,16 +67,16 @@ void free_history(void);
 int get_history_count(void);
 
 
-/* Description:
+/* Description:	Retrieves previously used command from history.
  *
- * Parameter:
+ * Parameter:	history_index - index number of command from history.			
  *
- * Return:
+ * Return:		Return a string containing the command.
  */
 char *get_history_item(int history_index);
 
 
-/* Description:
+/* Description:	Initializes the history for use.
  *
  * Parameter:
  *
@@ -83,18 +85,19 @@ char *get_history_item(int history_index);
 void init_history(void);
 
 
-/* Description:
+/* Description:	Display an item from history.
  *
- * Parameter:
+ * Parameter:	history_index - index number of item from history
+ *								that will be displayed.
  *
  * Return:
  */
 void print_history_item(int history_index);
 
 
-/* Description:	Prints the current command(s) list entered by the
+/* Description:	Display the current command(s) list entered by the
  *				user of shell. Sorted from the latest to the first
- *				command used by user.
+ *				command entered by user.
  *
  * Parameter:
  *
