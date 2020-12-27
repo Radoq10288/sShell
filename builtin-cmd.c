@@ -51,6 +51,14 @@ int exit_shell(void){
 int history(char *hs_argument_1, char *hs_argument_2){
 	int history_index = 0, hs_status;
 
+	if(hs_argument_1 == NULL){
+        hs_argument_1 = "";
+	}
+
+	if(hs_argument_2 == NULL){
+	    hs_argument_2 = "";
+	}
+
 	if(isdigit(*hs_argument_1) && strcmp(hs_argument_2, "-e") == 0){
 
 		char *hs_command_copy;
