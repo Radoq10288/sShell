@@ -35,9 +35,7 @@ int exec_command(char *command_string){
 
 	}else if(strcmp(parsed_command_arguments[0], "history") == 0){
 
-		if(parsed_command_arguments[1] == NULL){
-			ec_status = history(parsed_command_arguments[0], NULL);
-		}else if(parsed_command_arguments[2] == NULL){
+		if(parsed_command_arguments[2] == NULL){
 			ec_status = history(parsed_command_arguments[1], NULL);
 		}else if(parsed_command_arguments[3] == NULL){
 			ec_status = history(parsed_command_arguments[1], parsed_command_arguments[2]);
