@@ -22,7 +22,10 @@ int exec_command(char *command_string){
 	char **parsed_command_arguments;
 	parsed_command_arguments = parse_string(command_string, " ");
 
-	if(strcmp(parsed_command_arguments[0], "cd") == 0){
+	if(parsed_command_arguments[0] == NULL){
+		ec_status = -1;
+
+	}else if(strcmp(parsed_command_arguments[0], "cd") == 0){
 
 		if(parsed_command_arguments[1] == NULL){
 			ec_status = change_directory(parsed_command_arguments[0]);
@@ -33,9 +36,9 @@ int exec_command(char *command_string){
 	}else if(strcmp(parsed_command_arguments[0], "history") == 0){
 
 		if(parsed_command_arguments[1] == NULL){
-			ec_status = history(parsed_command_arguments[0], "");
+			ec_status = history(parsed_command_arguments[0], NULL);
 		}else if(parsed_command_arguments[2] == NULL){
-			ec_status = history(parsed_command_arguments[1], "");
+			ec_status = history(parsed_command_arguments[1], NULL);
 		}else if(parsed_command_arguments[3] == NULL){
 			ec_status = history(parsed_command_arguments[1], parsed_command_arguments[2]);
 		}else{
