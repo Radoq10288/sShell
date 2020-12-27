@@ -77,10 +77,6 @@ int history(char *hs_argument_1, char *hs_argument_2){
 		printf("History cleared!\n\n");
 		hs_status = 1;
 
-	}else if(strcmp(hs_argument_1, "history") == 0){
-		print_history_list();
-		hs_status = 1;
-
 	}else{
 		hs_status = -1;
 
