@@ -74,6 +74,9 @@ int main(){
 
 		if(command_string != NULL){
 
+            sShell_status = exec_command(command_string);
+			add_new_history(command_string_copy);
+
 			history_count = get_history_count();
 			if(history_count > 10){
 
@@ -84,9 +87,8 @@ int main(){
 
 			}
 
-			sShell_status = exec_command(command_string);
-			add_new_history(command_string_copy);
 			if(strcmp(command_string_copy, "history") == 0){ print_history_list(); }
+
 		}
 
 		command_string = NULL;
