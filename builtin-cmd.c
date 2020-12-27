@@ -49,28 +49,32 @@ int exit_shell(void){
 
 
 int history(char *hs_argument_1, char *hs_argument_2){
-	int history_index, hs_status;
+	int history_index = 0, hs_status;
 
 	if(isdigit(*hs_argument_1) && strcmp(hs_argument_2, "-e") == 0){
+
 		char *hs_command_copy;
 
-		history_index = *hs_argument_1 - 48;
+		history_index = atoi(hs_argument_1);
 		hs_command_copy = get_history_item(history_index);
 
-		hs_status = exec_command(hs_command_copy);
+		if(hs_command_copy != NULL){
+            hs_status = exec_command(hs_command_copy);
+
+		}else{
+			printf("Command from index %i is not available!\n\n", history_index);
+            hs_status = -1;
+
+		}
 
 	}else if(isdigit(*hs_argument_1)){
-		history_index = *hs_argument_1 - 48;
+		history_index = atoi(hs_argument_1);
 		print_history_item(history_index);
 		hs_status = 1;
 
 	}else if(strcmp(hs_argument_1, "-c") == 0){
 		clear_history();
 		printf("History cleared!\n\n");
-		hs_status = 1;
-
-	}else if(strcmp(hs_argument_1, "history") == 0){
-		print_history_list();
 		hs_status = 1;
 
 	}else{

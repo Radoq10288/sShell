@@ -150,6 +150,8 @@ void print_history_list(void){
 
 	history_list *print_hl = chl;
 
+	if(print_hl == NULL){ printf("History is empty!\n"); }
+
 	short history_index = 1;
 	while(print_hl != NULL){
 		printf("[%d]\t%s\n", history_index, print_hl->history_string);

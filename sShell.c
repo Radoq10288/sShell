@@ -73,19 +73,20 @@ int main(){
         strcpy(command_string_copy, command_string);
 
 		if(command_string != NULL){
-			
+
 			history_count = get_history_count();
 			if(history_count > 10){
-				
+
 				while(history_count > 10){
 					delete_last_history();
 					history_count = get_history_count();
 				}
-				
+
 			}
-			
+
 			sShell_status = exec_command(command_string);
 			add_new_history(command_string_copy);
+			if(strcmp(command_string_copy, "history") == 0){ print_history_list(); }
 		}
 
 		command_string = NULL;
