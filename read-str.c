@@ -41,22 +41,25 @@ char *read_string(void){
 	do{
 		character = getchar();
 
-		/* TODO: 11-11-2020-3:20-PM ---------------------------------
-		 * This function can handle length of string up to
-		 * cs_buffer_size.
-		 *
-		 * To address this limitation, in future revision of this
-		 * function, command_string should be reallocated when
-		 * needed to avoid error.
-		 * ----------------------------------------------------------
-		 */
-
 		if(character != '\n'){
             command_string[character_index] = character;
 		}else{
 		    command_string[character_index] = '\0';
 		}
 		character_index++;
+
+		// When rs_buffer_size exceeds, it should be reallocated.
+		if(character_index >= rs_buffer_size){
+            rs_buffer_size += rs_buffer_size;
+            command_string = realloc(command_string, rs_buffer_size);
+
+            if(!command_string){
+                printf("Error: Reallocation failed!\n\n");
+                exit(EXIT_FAILURE);
+            }
+
+		}
+
 	}while(character != '\n');
 
 	// Set NULL to terminate the string
