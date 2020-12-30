@@ -2,7 +2,14 @@
 
 
 # Folder(s)
-*/
+bin/
+change-directory/
+exec/
+history/
+list-dir-content/
+obj/
+parse-string/
+read-string/
 
 # File(s)
 debug.cbp
