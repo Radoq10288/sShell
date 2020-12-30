@@ -21,7 +21,7 @@ char **parsed_string;
 
 
 // Frees memory block allocated by malloc()
-void free_mem_ps(void){
+void free_mem(void){
 	parsed_string = NULL;
 	free(parsed_string);
 }
@@ -42,15 +42,19 @@ char **parse_string(char *string, char *delimeter){
 		parsed_string[ps_index] = ps_part;
 		ps_part = strtok(NULL, delimeter);
 
-		/* TODO: 11-11-2020-10:03-PM --------------------------------
-		 * *parsed_string* can handle up to *ps_buffer_size*
-		 *
-		 * To overcome this limitation and any error,
-		 * parsed_string should be reallocated if initial
-		 * allocated size is reached.
-		 */
-
 		ps_index++;
+		
+		if(ps_index >= ps_buffer_size){
+			ps_buffer_size += ps_buffer_size;
+			parsed_string = realloc(parsed_string, ps_buffer_size);
+
+			if(!parsed_string){
+				printf("Error: Reallocation failed!\n\n");
+				exit(EXIT_FAILURE);
+			}
+
+		}
+
 	}
 
 	// Set null to the end of the string to terminate it
@@ -59,7 +63,7 @@ char **parse_string(char *string, char *delimeter){
 	/* Free allocated block of memory for *parsed_string* after
 	 * its value is returned.
 	 */
-	atexit(free_mem_ps);
+	atexit(free_mem);
 
 	return parsed_string;
 
