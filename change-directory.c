@@ -55,12 +55,17 @@ int change_dir_to(char *dir_string){
 
 	}else{
 
+		int dir_string_length = strlen(dir_string);
+
 		// If switching to a new directory on the current directory.
-		char *new_current_directory = NULL;
-		new_current_directory = current_directory;
+		char *new_current_directory = malloc(sizeof(char) * dir_string_length + cur_dir_size + 1);
+		strcpy(new_current_directory, current_directory);
 		strcat(new_current_directory, "\\");
 		strcat(new_current_directory, dir_string);
 		cdt_status = SetCurrentDirectory(new_current_directory);
+
+		new_current_directory = NULL;
+		free(new_current_directory);
 
 	}
 
